@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const usersRoutes = require('./routes/users.js');
-const cardsRoutes = require('./routes/cards.js')//commonjs
+const cardsRoutes = require('./routes/cards.js')
 
 const app = express();
 app.use(express.json());
@@ -16,7 +16,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/mydb').then(() => { //direccion IP r
 const { PORT = 3000 } = process.env;
 app.use((req, res, next) => {
   req.user = {
-    _id: '678b09a199c41466ea77c57f' // pega el _id del usuario de prueba que creamos en el paso anterior
+    _id: '678b09a199c41466ea77c57f'
   };
 
   next();

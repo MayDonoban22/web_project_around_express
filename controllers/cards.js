@@ -2,17 +2,17 @@ const { NotFoundError, ValidationError } = require('../errors/error.js');
 const Card = require('../models/card.js')
 
 async function createCard(req, res) {
-  const { name, image } = req.body;
+  const { name, link } = req.body;
   const userId = '677c46b1b6e81c32a3d26415';
 
-  if (!name || !image) {
-    return res.status(400).send({ message: 'Nombre e imagen son obligatorios' });
+  if (!name || !link) {
+    return res.status(400).send({ message: 'Nombre y link son obligatorios' });
   }
 
   try {
     const newCard = await Card.create({
       name,
-      link: image,
+      link,
       owner: userId,
     });
     res.status(201).json(newCard);
